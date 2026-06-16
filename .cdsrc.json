@@ -1,0 +1,14 @@
+{
+  "requires": {
+    "db": {
+      "kind": "sqlite"
+    }
+  },
+  "[production]": {
+    "requires": {
+      "db": {
+        "kind": "postgres"
+      }
+    }
+  }
+}

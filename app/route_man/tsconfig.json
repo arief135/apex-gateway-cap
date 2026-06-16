@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "es2022",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "ignoreDeprecations": "6.0",
+    "moduleResolution": "node",
+    "rootDir": "./webapp",
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "id/apnv/apex/ui/routeman/*": [
+        "./webapp/*"
+      ]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@sapui5/types",
+      "../../node_modules/@types",
+      "../../node_modules/@sapui5/types"
+    ],
+    "types": [
+      "../../node_modules/@sapui5/types"
+    ]
+  },
+  "include": [
+    "./webapp/**/*"
+  ]
+}

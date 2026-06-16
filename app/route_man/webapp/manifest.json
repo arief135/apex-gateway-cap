@@ -1,0 +1,178 @@
+{
+  "_version": "1.84.0",
+  "sap.app": {
+    "id": "id.apnv.apex.ui.routeman",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.24.0",
+      "toolsId": "c26f6bc3-2256-4248-9ac1-daec02939c08"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/gateway/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.01"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.148.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.ui.codeeditor": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "id.apnv.apex.ui.routeman.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "RoutesList",
+          "target": "RoutesList"
+        },
+        {
+          "pattern": "Routes({key}):?query:",
+          "name": "RoutesObjectPage",
+          "target": "RoutesObjectPage"
+        }
+      ],
+      "targets": {
+        "RoutesList": {
+          "type": "Component",
+          "id": "RoutesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Routes",
+              "variantManagement": "Page",
+              "navigation": {
+                "Routes": {
+                  "detail": {
+                    "route": "RoutesObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "RoutesObjectPage": {
+          "type": "Component",
+          "id": "RoutesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Routes",
+              "content": {
+                "body": {
+                  "sections": {
+                    "AllowedMethodsSection": {
+                      "template": "id.apnv.apex.ui.routeman.ext.fragment.AllowedMethods",
+                      "title": "Allowed Methods",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "GeneratedFacet1"
+                      }
+                    },
+                    "TransformSection": {
+                      "template": "id.apnv.apex.ui.routeman.ext.fragment.Transform",
+                      "title": "Transformations",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "AllowedMethodsSection"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController": {
+            "controllerName": "id.apnv.apex.ui.routeman.ext.AllowedMethodsExt"
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}

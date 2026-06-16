@@ -1,0 +1,1 @@
+using GatewayService as service from '../../srv/gateway-service';

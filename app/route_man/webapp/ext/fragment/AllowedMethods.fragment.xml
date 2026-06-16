@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout">
+
+    <l:VerticalLayout width="100%" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom">
+
+        <Label text="Allowed Methods" class="sapUiSmallMarginBottom" design="Bold"/>
+        <MultiComboBox
+            id="allowedMethodsCombo"
+            selectedKeys="{allowedMethodsModel>/selectedKeys}"
+            selectionChange=".extension.id.apnv.apex.ui.routeman.ext.AllowedMethodsExt.onSelectionChange"
+            enabled="{ui>/isEditable}"
+            width="100%">
+            <items>
+                <core:Item key="GET"     text="GET"/>
+                <core:Item key="POST"    text="POST"/>
+                <core:Item key="PUT"     text="PUT"/>
+                <core:Item key="DELETE"  text="DELETE"/>
+                <core:Item key="PATCH"   text="PATCH"/>
+                <core:Item key="HEAD"    text="HEAD"/>
+                <core:Item key="OPTIONS" text="OPTIONS"/>
+            </items>
+        </MultiComboBox>
+
+    </l:VerticalLayout>
+
+</core:FragmentDefinition>

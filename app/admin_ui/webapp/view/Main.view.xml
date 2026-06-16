@@ -1,0 +1,7 @@
+<mvc:View
+    controllerName="id.apnv.apex.ui.adminui.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+>
+</mvc:View>

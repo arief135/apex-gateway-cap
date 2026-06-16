@@ -1,0 +1,39 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:code="sap.ui.codeeditor">
+
+    <l:VerticalLayout width="100%" class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom">
+
+        <Label text="Request Transform" class="sapUiSmallMarginBottom" design="Bold"/>
+        <Text
+            text="Script runs before forwarding. Globals: headers (object), body (object|string), query (object), path (string), method (string). Mutate in-place."
+            class="sapUiTinyMarginBottom"/>
+        <code:CodeEditor
+            id="requestTransformEditor"
+            type="javascript"
+            value="{requestTransform}"
+            height="200px"
+            editable="{ui>/isEditable}"
+            placeholder="// Example:&#10;// headers['X-Custom'] = 'value';&#10;// body.meta = { source: 'gateway' };&#10;// delete headers['x-internal-token'];"
+            width="100%"/>
+
+        <core:HTML content="&lt;div style='margin-top:1rem'/&gt;"/>
+
+        <Label text="Response Transform" class="sapUiSmallMarginBottom" design="Bold"/>
+        <Text
+            text="Script runs after receiving backend response. Globals: headers (object), body (object|string), status (number). Assign status directly: status = 200."
+            class="sapUiTinyMarginBottom"/>
+        <code:CodeEditor
+            id="responseTransformEditor"
+            type="javascript"
+            value="{responseTransform}"
+            height="200px"
+            editable="{ui>/isEditable}"
+            placeholder="// Example:&#10;// status = 200;&#10;// delete headers['server'];&#10;// if (body.error) body.error = 'masked';"
+            width="100%"/>
+
+    </l:VerticalLayout>
+
+</core:FragmentDefinition>

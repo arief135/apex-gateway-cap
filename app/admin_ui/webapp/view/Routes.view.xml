@@ -1,0 +1,142 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	controllerName="id.apnv.apex.ui.adminui.controller.Routes"
+	displayBlock="true">
+	<Shell id="shell">
+		<App id="app1">
+			<pages>
+				<!-- Master Page: Routes List -->
+				<Page
+					id="routesListPage"
+					title="Routes Management"
+					showNavButton="false">
+					<headerContent>
+						<Button
+							id="addRouteBtn"
+							text="Add Route"
+							type="Emphasized"
+							press=".onAddRoute" />
+					</headerContent>
+					<content>
+						<Table
+							id="routesTable"
+							items="{/Routes}"
+							selectionChange=".onRouteSelect"
+							class="sapUiResponsiveMargin">
+							<headerToolbar>
+								<Toolbar id="_IDGenToolbar1">
+									<SearchField
+										id="searchRoutes"
+										width="100%"
+										search=".onSearch"
+										placeholder="Search routes..." />
+									<ToolbarSpacer id="_IDGenToolbarSpacer2" />
+									<Button
+										id="deleteRouteBtn"
+										text="Delete"
+										type="Negative"
+										press=".onDeleteRoute"
+										enabled="true" />
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column id="_IDGenColumn">
+									<Text id="_IDGenText4" text="Route ID" />
+								</Column>
+								<Column id="_IDGenColumn1">
+									<Text id="_IDGenText5" text="Path" />
+								</Column>
+								<Column id="_IDGenColumn2">
+									<Text id="_IDGenText6" text="Target" />
+								</Column>
+								<Column id="_IDGenColumn3">
+									<Text id="_IDGenText7" text="Description" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="_IDGenColumnListItem"
+									type="Navigation"
+									press=".onRouteSelect">
+									<cells>
+										<Text id="_IDGenText8" text="{id}" />
+										<Text id="_IDGenText9" text="{pathPattern}" />
+										<Text id="_IDGenText10" text="{destination}" />
+										<Text id="_IDGenText11" text="{status}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</Page>
+
+				<!-- Detail Page: Route Form -->
+				<Page
+					id="routeDetailPage"
+					title="{= true ? 'Edit Route' : 'New Route'}"
+					showNavButton="true"
+					navButtonPress=".onBackToList">
+					<content>
+						<f:SimpleForm id="_IDGenSimpleForm"
+							editable="true"
+							layout="ResponsiveGridLayout"
+							class="sapUiResponsiveMargin">
+							<f:content>
+								<Label id="_IDGenLabel" text="Route ID" />
+								<Input
+									id="routeId"
+									value="/currentRoute/id"
+									enabled="true"
+									type="Text" />
+
+								<Label id="_IDGenLabel1" text="Path" />
+								<Input
+									id="routePath"
+									value="/currentRoute/pathPattern"
+									type="Text"
+									required="true"
+									placeholder="e.g., /api/users" />
+
+								<Label id="_IDGenLabel2" text="Target" />
+								<Input
+									id="routeTarget"
+									value="/currentRoute/target"
+									type="Text"
+									required="true"
+									placeholder="e.g., http://localhost:3000" />
+
+								<Label id="_IDGenLabel3" text="Description" />
+								<TextArea
+									id="routeDescription"
+									value="/currentRoute/description"
+									rows="5"
+									placeholder="Enter route description..." />
+
+								<Label id="_IDGenLabel4" text="Active" />
+								<CheckBox
+									id="routeActive"
+									selected="/currentRoute/active" />
+							</f:content>
+						</f:SimpleForm>
+					</content>
+					<footer>
+						<OverflowToolbar id="_IDGenOverflowToolbar">
+							<ToolbarSpacer id="_IDGenToolbarSpacer3" />
+							<Button
+								id="saveRouteBtn"
+								text="Save"
+								type="Emphasized"
+								press=".onSaveRoute" />
+							<Button
+								id="cancelBtn"
+								text="Cancel"
+								press=".onCancelEdit" />
+						</OverflowToolbar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

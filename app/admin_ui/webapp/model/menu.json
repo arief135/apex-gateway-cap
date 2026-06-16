@@ -1,0 +1,31 @@
+{
+    "selectedKey": "page2",
+    "navigation": [
+        {
+            "title": "Routes",
+            "key": "RoutePage"
+        },
+        {
+            "title": "Destinations",
+            "key": "DestinationPage"
+        }
+    ],
+    "fixedNavigation": [],
+    "headerItems": [
+        {
+            "text": "File"
+        },
+        {
+            "text": "Edit"
+        },
+        {
+            "text": "View"
+        },
+        {
+            "text": "Settings"
+        },
+        {
+            "text": "Help"
+        }
+    ]
+}

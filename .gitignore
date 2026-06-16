@@ -17,3 +17,7 @@ mta_archives/
 
 # @cap-js/cds-typer
 @cds-models
+db/data/
+db.sqlite3
+
+app/*/dist/

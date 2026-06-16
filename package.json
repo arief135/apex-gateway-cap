@@ -2,13 +2,35 @@
   "name": "apex-gateway-cap",
   "version": "1.0.0",
   "dependencies": {
+    "@cap-js/postgres": "^2",
     "@sap/cds": "^9"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^2.4"
+    "@cap-js/cds-test": "^1.0.1",
+    "@cap-js/cds-types": "^0.17.0",
+    "@cap-js/sqlite": "^2.4",
+    "@types/node": "^25.9.3",
+    "cds-plugin-ui5": "^0.13.0",
+    "tsx": "^4.22.2",
+    "vitest": "^4.1.9"
   },
   "scripts": {
-    "start": "cds-serve"
+    "build": "node scripts/build.js",
+    "start": "cds serve all",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "refresh-data": "rm db/data/*.csv && cds add data --records 30",
+    "watch-admin_ui": "cds watch --open id.apnv.apex.ui.adminui/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-route_man": "cds watch --open id.apnv.apex.ui.routeman/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-destination_man": "cds watch --open id.apnv.apex.ui.destinationman/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
-  "private": true
+  "private": true,
+  "sapux": [
+    "app/admin_ui",
+    "app/route_man",
+    "app/destination_man"
+  ],
+  "workspaces": [
+    "app/*"
+  ]
 }
